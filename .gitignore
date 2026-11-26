@@ -1,0 +1,11 @@
+node_modules
+.vercel
+screenshots
+artifacts
+.grok
+.jupiter-key
+.node_modules.lock
+dist
+*.log
+.env
+.env.*

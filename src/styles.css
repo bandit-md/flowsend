@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --color-bg: #0c0c0c;
+  --color-surface: #171717;
+  --color-raised: #222222;
+  --color-fg: #f4f4f2;
+  --color-muted: #9c9c96;
+  --color-faint: #6f6f69;
+  --color-primary: #e4ff3a;
+  --color-ink: #141407;
+  --color-line: #2e2e2e;
+  --color-danger: #ff5d4e;
+  --shadow-card: 0 0 0 1px rgb(255 255 255 / 0.06);
+  --radius-card: 1.5rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-ink);
+  }
+}
+
+html[data-lite="1"] body {
+  background-image: none;
+}
+
+html[data-lite="1"] .live-dot,
+html[data-lite="1"] * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.live-dot {
+  animation: flow-pulse 1.8s ease-in-out infinite;
+}
+
+.token-icon {
+  outline: 1px solid rgb(255 255 255 / 0.1);
+  outline-offset: -1px;
+}
+
+@keyframes flow-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot,
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
